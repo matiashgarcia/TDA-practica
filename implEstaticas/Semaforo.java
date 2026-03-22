@@ -5,13 +5,14 @@ import especificaciones.SemaforoTDA;
 public class Semaforo implements SemaforoTDA {
 
 	private String color;
-    
-    @Override
-    public void inicializarSemaforo(String color) {
-        switch (color) {
-            case "Rojo", "Verde", "Amarillo" -> this.color = color;
-        }
-    }
+
+	@Override
+	public void inicializarSemaforo(String color) {
+		if (color.equals("Rojo") || color.equals("Verde") || color.equals("Amarillo"))
+			this.color = color;
+		else
+			this.color = "Rojo";
+	}
 
 	@Override
 	public void cambiarARojo() {
@@ -30,6 +31,6 @@ public class Semaforo implements SemaforoTDA {
 
 	@Override
 	public String colorActual() {
-        return this.color;
+		return this.color;
 	}
 }
