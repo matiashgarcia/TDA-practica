@@ -4,18 +4,18 @@ import especificaciones.PilaTDA;
 
 public class Pila implements PilaTDA {
 
-    private int[] pila;
+    private int[] arr;
     private int indice;
 
     @Override
     public void inicializarPila() {
-        pila = new int[100];
+        arr = new int[100];
         indice = 0;
     }
 
     @Override
     public void apilar(int x) {
-        pila[indice] = x;
+        arr[indice] = x;
         indice++;
     }
 
@@ -28,7 +28,7 @@ public class Pila implements PilaTDA {
     @Override
     public int tope() {
         if (!pilaVacia())
-            return pila[indice - 1];
+            return arr[indice - 1];
         return -1;
     }
 
