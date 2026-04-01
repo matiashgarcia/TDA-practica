@@ -14,12 +14,14 @@ public class Cola implements ColaTDA {
     }
 
     @Override
+    // Acolo por el final
     public void acolar(int x) {
         arr[index] = x;
         index++;
     }
 
     @Override
+    // Desplazo a la izquierda para desacolar
     public void desacolar() {
         if (!colaVacia()) {
             // Desplazamiento a la izquierda - Sobreescribo primero de la cola
