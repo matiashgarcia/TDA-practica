@@ -1,29 +1,29 @@
-package test;
+package tests;
 
-import ejercicios.practicaCola;
+import ejercicios.ColaPractica;
 import especificaciones.ColaTDA;
 import implEstaticas.Cola;
 
-public class Test {
+public class ColaTest {
     public static void main(String[] args) {
         ColaTDA cola = new Cola();
         cola.inicializarCola();
         cola.acolar(5);
         cola.acolar(3);
         cola.acolar(10);
-        ColaTDA cola2 = practicaCola.copiarCola(cola);
-        practicaCola.imprimirCola(cola);
-        practicaCola.imprimirCola(cola2);
+        ColaTDA cola2 = ColaPractica.copiarCola(cola);
+        ColaPractica.imprimirCola(cola);
+        ColaPractica.imprimirCola(cola2);
 
         System.out.println("----------------");
 
         ColaTDA cola3 = new Cola();
         cola3.inicializarCola();
-        practicaCola.pasarCola(cola, cola3);
-        practicaCola.imprimirCola(cola3);
+        ColaPractica.pasarCola(cola, cola3);
+        ColaPractica.imprimirCola(cola3);
 
         System.out.println("----------------");
 
-        System.out.println(practicaCola.calcularSuma(cola3));
+        System.out.println(ColaPractica.calcularSuma(cola3));
     }
 }

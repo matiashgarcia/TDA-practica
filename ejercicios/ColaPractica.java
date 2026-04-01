@@ -3,7 +3,7 @@ package ejercicios;
 import especificaciones.ColaTDA;
 import implEstaticas.Cola;
 
-public class practicaCola {
+public class ColaPractica {
 
     // Pasar los elementos de una cola a la otra, manteniendo el orden original
     public static void pasarCola(ColaTDA origen, ColaTDA destino) {
