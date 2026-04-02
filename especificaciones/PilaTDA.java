@@ -6,7 +6,7 @@ public interface PilaTDA {
 
     void apilar(int x);
 
-    void desapilar(int x);
+    void desapilar();
 
     int tope();
 

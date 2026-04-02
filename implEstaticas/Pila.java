@@ -20,7 +20,7 @@ public class Pila implements PilaTDA {
     }
 
     @Override
-    public void desapilar(int x) {
+    public void desapilar() {
         if (!pilaVacia())
             indice--;
     }
