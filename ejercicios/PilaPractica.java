@@ -37,8 +37,11 @@ public class PilaPractica {
     public static void invertirPila(PilaTDA pila) {
         PilaTDA aux = new Pila();
         aux.inicializarPila();
+        PilaTDA aux2 = new Pila();
+        aux2.inicializarPila();
         pasarPilaInvertida(pila, aux);
-        pasarPilaInvertida(aux, pila);
+        pasarPilaInvertida(aux, aux2);
+        pasarPilaInvertida(aux2, pila);
     }
 
     // Precondicion: pila esta inicializada
@@ -63,7 +66,7 @@ public class PilaPractica {
         return suma;
     }
 
-    // Precondicion: pila esta inicializada
+    // Precondicion: pila esta inicializada y no debe estar vacia
     public static int promedioElementosPila(PilaTDA pila) {
         return sumarElementosPila(pila) / contarElementosPila(pila);
     }
