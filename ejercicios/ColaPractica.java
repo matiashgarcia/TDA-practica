@@ -53,16 +53,15 @@ public class ColaPractica {
     }
 
     // precondicion: cola inicializada
-    /*
-     * public static void invertirColaSinPilas(ColaTDA cola) {
-     * ColaTDA copia = copiarCola(cola);
-     * while (!copia.colaVacia()) {
-     * cola.acolar(cola.primero());
-     * cola.desacolar();
-     * copia.desacolar();
-     * }
-     * }
-     */
+    public static void invertirColaSinPilas(ColaTDA cola) {
+        if (cola.colaVacia()) {
+            return;
+        }
+        int primero = cola.primero();
+        cola.desacolar();
+        invertirColaSinPilas(cola);
+        cola.acolar(primero);
+    }
 
     public static boolean coincideFinal(ColaTDA a, ColaTDA b) {
         invertirColaConPilas(a);

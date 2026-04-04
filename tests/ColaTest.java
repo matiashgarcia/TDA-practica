@@ -9,7 +9,6 @@ public class ColaTest {
         ColaTDA cola = new Cola();
         cola.inicializarCola();
         cola.acolar(5);
-        cola.acolar(5);
         cola.acolar(3);
         cola.acolar(10);
         /*
@@ -31,19 +30,16 @@ public class ColaTest {
 
         // System.out.println(ColaPractica.calcularSuma(cola3));
 
-        /*
-         * ColaPractica.invertirColaConPilas(cola);
-         * ColaPractica.imprimirCola(cola);
-         * System.out.println("----------");
-         * ColaPractica.invertirColaSinPilas(cola);
-         * ColaPractica.imprimirCola(cola);
-         */
+        ColaPractica.invertirColaConPilas(cola);
+        ColaPractica.imprimirCola(cola);
+        System.out.println("----------");
+        ColaPractica.invertirColaSinPilas(cola);
+        ColaPractica.imprimirCola(cola);
 
         ColaTDA aux = new Cola();
         aux.inicializarCola();
         aux.acolar(10);
         aux.acolar(3);
-        aux.acolar(5);
         aux.acolar(5);
         /*
          * ColaPractica.imprimirCola(aux);
@@ -52,7 +48,7 @@ public class ColaTest {
 
         // System.out.println(ColaPractica.esCapicua(aux));
 
-        System.out.println(ColaPractica.sonInversas(cola, aux));
+        // System.out.println(ColaPractica.sonInversas(cola, aux));
 
     }
 }
