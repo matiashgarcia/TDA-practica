@@ -8,4 +8,9 @@ public interface ConjuntoTDA {
 
     public void sacar(int x);
 
+    public int elegir();
+
+    public boolean pertence(int x);
+
+    public boolean conjuntoVacio();
 }
