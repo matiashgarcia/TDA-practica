@@ -10,15 +10,20 @@ public class PilaTest {
 
         PilaTDA pila = new Pila();
         pila.inicializarPila();
+        pila.apilar(8);
+        pila.apilar(7);
         pila.apilar(6);
         pila.apilar(4);
-        pila.apilar(8);
-        PilaPractica.imprimirPila(pila);
+        // PilaPractica.imprimirPila(pila);
 
         PilaTDA pila2 = new Pila();
         pila2.inicializarPila();
+        pila2.apilar(3);
+        pila2.apilar(12);
+        pila2.apilar(5);
+        pila2.apilar(64);
 
-        System.out.println("-------------");
+        // System.out.println("-------------");
         /*
          * PilaPractica.pasarPilaInvertida(pila, pila2);
          * PilaPractica.imprimirPila(pila);
@@ -31,11 +36,28 @@ public class PilaTest {
          * PilaPractica.imprimirPila(pila);
          */
 
-        PilaPractica.invertirPila(pila);
-        PilaPractica.imprimirPila(pila);
+        /*
+         * PilaPractica.invertirPila(pila);
+         * PilaPractica.imprimirPila(pila);
+         */
 
         // System.out.println(PilaPractica.contarElementosPila(pila));
         // System.out.println(PilaPractica.sumarElementosPila(pila));
         // System.out.println(PilaPractica.promedioElementosPila(pila));
+
+        /*
+         * PilaTDA pila3 = PilaPractica.obtenerMayoresAlPromedio(pila);
+         * PilaPractica.imprimirPila(pila3);
+         */
+
+        /*
+         * PilaPractica.insertarValorEnPosicion(pila, 18, 2);
+         * PilaPractica.imprimirPila(pila);
+         */
+
+        // System.out.println(PilaPractica.estaOrdenadaCrecientemente(pila));
+
+        PilaTDA pila4 = PilaPractica.generarPilaIntercalada(pila, pila2);
+        PilaPractica.imprimirPila(pila4);
     }
 }
