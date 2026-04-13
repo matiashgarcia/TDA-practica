@@ -79,4 +79,68 @@ public class PilaPractica {
         }
     }
 
+    public static PilaTDA obtenerMayoresAlPromedio(PilaTDA original) {
+        PilaTDA copia = copiarPila(original);
+        PilaTDA resultado = new Pila();
+        resultado.inicializarPila();
+        int promedio = promedioElementosPila(copia);
+        while (!copia.pilaVacia()) {
+            if (copia.tope() > promedio)
+                resultado.apilar(copia.tope());
+            copia.desapilar();
+        }
+        return resultado;
+    }
+
+    public static void insertarValorEnPosicion(PilaTDA pila, int x, int k) {
+        PilaTDA aux = new Pila();
+        aux.inicializarPila();
+        int contador = 0;
+        while (!pila.pilaVacia() && contador != k) {
+            aux.apilar(pila.tope());
+            pila.desapilar();
+            contador++;
+        }
+        if (contador == k) {
+            pila.apilar(x);
+            while (!aux.pilaVacia()) {
+                pila.apilar(aux.tope());
+                aux.desapilar();
+            }
+        }
+    }
+
+    public static boolean estaOrdenadaCrecientemente(PilaTDA pila) {
+        PilaTDA copia = copiarPila(pila);
+        int anterior = copia.tope();
+        copia.desapilar();
+        while (!copia.pilaVacia() && anterior < copia.tope()) {
+            anterior = copia.tope();
+            copia.desapilar();
+        }
+        return copia.pilaVacia();
+    }
+
+    public static PilaTDA generarPilaIntercalada(PilaTDA a, PilaTDA b) {
+        PilaTDA resultado = new Pila();
+        resultado.inicializarPila();
+        while (!a.pilaVacia() && !b.pilaVacia()) {
+            resultado.apilar(a.tope());
+            resultado.apilar(b.tope());
+            a.desapilar();
+            b.desapilar();
+        }
+        return resultado;
+        /*
+         * while(!a.pilaVacia() || !b.pilaVacia()){
+         * if(!a.pilaVacia())
+         * resultado.apilar(a.tope());
+         * a.desapilar();
+         * if(!b.pilaVacia())
+         * resultado.apilar(b.tope());
+         * b.desapilar();
+         * }
+         */
+    }
+
 }
