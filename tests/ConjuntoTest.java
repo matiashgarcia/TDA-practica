@@ -20,8 +20,6 @@ public class ConjuntoTest {
         c2.agregar(1);
         c2.agregar(7);
         c2.agregar(2);
-        c2.agregar(3);
-        c2.agregar(5);
 
         /*
          * ConjuntoTDA c3 = ConjuntoPractica.interseccionDeConjuntos(c1, c2);
