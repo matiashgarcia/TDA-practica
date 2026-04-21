@@ -36,8 +36,7 @@ public class DiccionarioSimple implements DiccionarioSimpleTDA {
     public void eliminar(int clave) {
         int i = clave2Indice(clave);
         if (i < cant) {
-            elementos[i].clave = elementos[cant - 1].clave;
-            elementos[i].valor = elementos[cant - 1].valor;
+            elementos[i] = elementos[cant - 1];
             cant--;
         }
 
