@@ -28,7 +28,7 @@ public class DiccionarioMultiplePractica {
             System.out.print("{" + clave + " : " + "[");
             while(!v.conjuntoVacio()){
                 int valor = v.elegir();
-                System.out.print(+ valor + ", ");
+                System.out.print(valor + ", ");
                 v.sacar(valor);
             }
             System.out.println("]}");
