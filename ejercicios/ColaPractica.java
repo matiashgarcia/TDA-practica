@@ -124,7 +124,10 @@ public class ColaPractica {
         }
     }
 
-    public static moverKelementosAlFinal(int k, ColaTDA c){
-
+    public static void moverKelementosAlFinal(int k, ColaTDA c) {
+        for (int i = 0; i < k; i++) {
+            c.acolar(c.primero());
+            c.desacolar();
+        }
     }
 }
