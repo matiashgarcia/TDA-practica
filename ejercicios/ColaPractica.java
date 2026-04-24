@@ -1,8 +1,15 @@
 package ejercicios;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import especificaciones.ColaTDA;
+import especificaciones.ConjuntoTDA;
+import especificaciones.DiccionarioSimpleTDA;
 import especificaciones.PilaTDA;
 import implEstaticas.Cola;
+import implEstaticas.Conjunto;
+import implEstaticas.DiccionarioSimple;
 import implEstaticas.Pila;
 
 public class ColaPractica {
@@ -124,7 +131,84 @@ public class ColaPractica {
         }
     }
 
-    public static moverKelementosAlFinal(int k, ColaTDA c){
+    public static void moverKelementosAlFinal(int k, ColaTDA c){
+        for(int i = 0; i < k; i++){
+            int elemento = c.primero();
+            c.acolar(elemento);
+            c.desacolar();
+        }
+    }
 
+    // Chequear este metodo
+    public static void ordenarConColasAux(ColaTDA c){
+        ColaTDA resultado = new Cola();
+        resultado.inicializarCola();
+
+        while (!c.colaVacia()) {
+            // cycle through c to find minimum, saving all elements in aux
+            ColaTDA aux = new Cola();
+            aux.inicializarCola();
+            int min = c.primero();
+            while (!c.colaVacia()) {
+                if (c.primero() < min) 
+                    min = c.primero();
+                aux.acolar(c.primero());
+                c.desacolar();
+            }
+            // restore c from aux, skipping the first occurrence of min
+            boolean removed = false;
+            while (!aux.colaVacia()) {
+                if (aux.primero() == min && !removed) {
+                    removed = true;
+                } else {
+                    c.acolar(aux.primero());
+                }
+                aux.desacolar();
+            }
+            resultado.acolar(min);
+        }
+
+        pasarCola(resultado, c);
+    }
+
+    public static int valorMasRepetido(ColaTDA c){
+        ColaTDA aux = copiarCola(c);
+        DiccionarioSimpleTDA d = new DiccionarioSimple();
+        d.inicializarDiccionario();
+        while(!aux.colaVacia()){
+            int clave = aux.primero();
+            int valor = d.recuperar(clave);
+            if(valor == -1)
+                d.agregar(clave, 1);
+            else
+                d.agregar(clave, valor + 1);
+            aux.desacolar();
+        }
+        ConjuntoTDA claves = d.claves();
+        int claveMayor = claves.elegir();
+        int valorMayor = d.recuperar(claveMayor);
+        claves.sacar(claveMayor);
+        while(!claves.conjuntoVacio()){
+            int clave = claves.elegir();
+            int valor = d.recuperar(clave);
+            if(valor > valorMayor){
+                valorMayor = valor;
+                claveMayor = clave;
+            }
+            claves.sacar(clave);
+        }
+        return claveMayor;
+    }
+
+    public static void separarParesEImpares(ColaTDA c, ColaTDA pares, ColaTDA impares){
+        ColaTDA aux = copiarCola(c);
+        while(!aux.colaVacia()){
+            int primero = aux.primero();
+            if(primero % 2 == 0)
+                pares.acolar(primero);
+            else
+                impares.acolar(primero);
+            aux.desacolar();
+        }
     }
 }
