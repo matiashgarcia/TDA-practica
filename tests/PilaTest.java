@@ -1,6 +1,6 @@
 package tests;
 
-import ejercicios.PilaPractica;
+import ejerciciosEstaticos.PilaPractica;
 import especificaciones.PilaTDA;
 import implEstaticas.Pila;
 

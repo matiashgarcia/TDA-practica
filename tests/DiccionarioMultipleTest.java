@@ -1,6 +1,6 @@
 package tests;
 
-import ejercicios.DiccionarioMultiplePractica;
+import ejerciciosEstaticos.DiccionarioMultiplePractica;
 import especificaciones.DiccionarioMultipleTDA;
 import especificaciones.DiccionarioSimpleTDA;
 import implEstaticas.DiccionarioMultiple;
@@ -9,15 +9,17 @@ import implEstaticas.DiccionarioSimple;
 public class DiccionarioMultipleTest {
 
     public static void main(String[] args) {
-/*         DiccionarioMultipleTDA d = new DiccionarioMultiple();
-        d.inicializarDiccionario();
-        d.agregar(2, 5);
-        d.agregar(91, 6);
-        d.agregar(91, 12);
-        d.agregar(91, 82);
-        d.agregar(8, 53);
-        d.agregar(8, 20);
-        DiccionarioMultiplePractica.imprimirDiccionario(d); */
+        /*
+         * DiccionarioMultipleTDA d = new DiccionarioMultiple();
+         * d.inicializarDiccionario();
+         * d.agregar(2, 5);
+         * d.agregar(91, 6);
+         * d.agregar(91, 12);
+         * d.agregar(91, 82);
+         * d.agregar(8, 53);
+         * d.agregar(8, 20);
+         * DiccionarioMultiplePractica.imprimirDiccionario(d);
+         */
 
         DiccionarioSimpleTDA dicSimple = new DiccionarioSimple();
         dicSimple.inicializarDiccionario();

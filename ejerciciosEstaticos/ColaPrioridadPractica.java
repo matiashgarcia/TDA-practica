@@ -1,4 +1,4 @@
-package ejercicios;
+package ejerciciosEstaticos;
 
 import especificaciones.ColaPrioridadTDA;
 import especificaciones.ColaTDA;

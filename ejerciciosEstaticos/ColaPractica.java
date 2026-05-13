@@ -1,10 +1,11 @@
-package ejercicios;
+package ejerciciosEstaticos;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import especificaciones.ColaTDA;
 import especificaciones.ConjuntoTDA;
+import especificaciones.DiccionarioMultipleTDA;
 import especificaciones.DiccionarioSimpleTDA;
 import especificaciones.PilaTDA;
 import implEstaticas.Cola;
@@ -131,8 +132,8 @@ public class ColaPractica {
         }
     }
 
-    public static void moverKelementosAlFinal(int k, ColaTDA c){
-        for(int i = 0; i < k; i++){
+    public static void moverKelementosAlFinal(int k, ColaTDA c) {
+        for (int i = 0; i < k; i++) {
             int elemento = c.primero();
             c.acolar(elemento);
             c.desacolar();
@@ -140,7 +141,7 @@ public class ColaPractica {
     }
 
     // Chequear este metodo
-    public static void ordenarConColasAux(ColaTDA c){
+    public static void ordenarConColasAux(ColaTDA c) {
         ColaTDA resultado = new Cola();
         resultado.inicializarCola();
 
@@ -150,7 +151,7 @@ public class ColaPractica {
             aux.inicializarCola();
             int min = c.primero();
             while (!c.colaVacia()) {
-                if (c.primero() < min) 
+                if (c.primero() < min)
                     min = c.primero();
                 aux.acolar(c.primero());
                 c.desacolar();
@@ -167,18 +168,17 @@ public class ColaPractica {
             }
             resultado.acolar(min);
         }
-
         pasarCola(resultado, c);
     }
 
-    public static int valorMasRepetido(ColaTDA c){
+    public static int valorMasRepetido(ColaTDA c) {
         ColaTDA aux = copiarCola(c);
         DiccionarioSimpleTDA d = new DiccionarioSimple();
         d.inicializarDiccionario();
-        while(!aux.colaVacia()){
+        while (!aux.colaVacia()) {
             int clave = aux.primero();
             int valor = d.recuperar(clave);
-            if(valor == -1)
+            if (valor == -1)
                 d.agregar(clave, 1);
             else
                 d.agregar(clave, valor + 1);
@@ -188,10 +188,10 @@ public class ColaPractica {
         int claveMayor = claves.elegir();
         int valorMayor = d.recuperar(claveMayor);
         claves.sacar(claveMayor);
-        while(!claves.conjuntoVacio()){
+        while (!claves.conjuntoVacio()) {
             int clave = claves.elegir();
             int valor = d.recuperar(clave);
-            if(valor > valorMayor){
+            if (valor > valorMayor) {
                 valorMayor = valor;
                 claveMayor = clave;
             }
@@ -200,15 +200,43 @@ public class ColaPractica {
         return claveMayor;
     }
 
-    public static void separarParesEImpares(ColaTDA c, ColaTDA pares, ColaTDA impares){
+    public static void separarParesEImpares(ColaTDA c, ColaTDA pares, ColaTDA impares) {
         ColaTDA aux = copiarCola(c);
-        while(!aux.colaVacia()){
+        while (!aux.colaVacia()) {
             int primero = aux.primero();
-            if(primero % 2 == 0)
+            if (primero % 2 == 0)
                 pares.acolar(primero);
             else
                 impares.acolar(primero);
             aux.desacolar();
         }
+    }
+
+    public static ColaTDA valoresDictMultipleCuyaClaveCoincideCola(DiccionarioMultipleTDA d, ColaTDA c) {
+        ColaTDA aux = new Cola();
+        aux.inicializarCola();
+        ConjuntoTDA claves = d.claves();
+        ColaTDA resultado = new Cola();
+        resultado.inicializarCola();
+        while (!c.colaVacia()) {
+            int clave = c.primero();
+            if (claves.pertence(clave)) {
+                ConjuntoTDA valores = d.recuperar(clave);
+                while (!valores.conjuntoVacio()) {
+                    int valor = valores.elegir();
+                    resultado.acolar(valor);
+                    valores.sacar(valor);
+                }
+                claves.sacar(clave);
+            }
+            c.desacolar();
+            aux.acolar(clave);
+        }
+        while (!aux.colaVacia()) {
+            int elemento = aux.primero();
+            c.acolar(elemento);
+            aux.desacolar();
+        }
+        return resultado;
     }
 }

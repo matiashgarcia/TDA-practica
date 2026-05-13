@@ -1,6 +1,6 @@
 package tests;
 
-import ejercicios.ConjuntoPractica;
+import ejerciciosEstaticos.ConjuntoPractica;
 import especificaciones.ConjuntoTDA;
 import implEstaticas.Conjunto;
 

@@ -1,6 +1,6 @@
 package tests;
 
-import ejercicios.ColaPrioridadPractica;
+import ejerciciosEstaticos.ColaPrioridadPractica;
 import especificaciones.ColaPrioridadTDA;
 import especificaciones.ColaTDA;
 import implEstaticas.Cola;

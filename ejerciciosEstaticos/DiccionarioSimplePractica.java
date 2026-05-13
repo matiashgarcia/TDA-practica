@@ -1,4 +1,4 @@
-package ejercicios;
+package ejerciciosEstaticos;
 
 import especificaciones.ConjuntoTDA;
 import especificaciones.DiccionarioSimpleTDA;
@@ -28,6 +28,21 @@ public class DiccionarioSimplePractica {
             System.out.println("{" + clave + " : " + valor + "}");
             claves.sacar(clave);
         }
+    }
+
+    public static boolean sonDiccionariosIguales(DiccionarioSimpleTDA a, DiccionarioSimpleTDA b) {
+        ConjuntoTDA clavesA = a.claves();
+        ConjuntoTDA clavesB = b.claves();
+        while (!clavesA.conjuntoVacio() && !clavesB.conjuntoVacio()) {
+            int claveA = clavesA.elegir();
+            int valorA = a.recuperar(claveA);
+            int valorB = b.recuperar(claveA);
+            if (!clavesB.pertence(claveA) || valorA != valorB)
+                return false;
+            clavesA.sacar(claveA);
+            clavesB.sacar(claveA);
+        }
+        return clavesA.conjuntoVacio() && clavesB.conjuntoVacio();
     }
 
 }
