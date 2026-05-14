@@ -1,15 +1,11 @@
 package ejerciciosEstaticos;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import especificaciones.ColaTDA;
 import especificaciones.ConjuntoTDA;
 import especificaciones.DiccionarioMultipleTDA;
 import especificaciones.DiccionarioSimpleTDA;
 import especificaciones.PilaTDA;
 import implEstaticas.Cola;
-import implEstaticas.Conjunto;
 import implEstaticas.DiccionarioSimple;
 import implEstaticas.Pila;
 
