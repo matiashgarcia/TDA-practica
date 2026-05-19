@@ -5,34 +5,78 @@ import especificaciones.DiccionarioSimpleTDA;
 
 public class DiccionarioSimpleDM implements DiccionarioSimpleTDA {
 
+    class Nodo {
+        private int clave;
+        private int valor;
+        private Nodo sig;
+    }
+
+    private Nodo origen;
+
     @Override
     public void inicializarDiccionario() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'inicializarDiccionario'");
+        origen = null;
     }
 
     @Override
     public void agregar(int clave, int valor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'agregar'");
+        Nodo aux = origen;
+        while (aux != null && aux.clave != clave) {
+            aux = aux.sig;
+        }
+        if (aux != null)
+            aux.valor = valor;
+        else {
+            Nodo nuevo = new Nodo();
+            nuevo.clave = clave;
+            nuevo.valor = valor;
+            nuevo.sig = origen;
+            origen = nuevo;
+        }
     }
 
     @Override
     public void eliminar(int clave) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eliminar'");
+        // Si no esta vacio el diccionario, empiezo
+        if (origen != null) {
+            // Si la clave esta en el origen, la elimino
+            if (origen.clave == clave)
+                origen = origen.sig;
+            // Si no esta en el origen, recorro la lista
+            else {
+                Nodo aux = origen;
+                while (aux.sig != null && aux.sig.clave != clave) {
+                    aux = aux.sig;
+                }
+                // Si encuentro la clave, la elimino
+                if (aux.sig != null) {
+                    aux.sig = aux.sig.sig;
+                }
+            }
+        }
     }
 
     @Override
     public ConjuntoTDA claves() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'claves'");
+        ConjuntoTDA claves = new ConjuntoDM();
+        claves.inicializarConjunto();
+        Nodo aux = origen;
+        while (aux != null) {
+            claves.agregar(aux.clave);
+            aux = aux.sig;
+        }
+        return claves;
     }
 
     @Override
     public int recuperar(int clave) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'recuperar'");
+        Nodo aux = origen;
+        while (aux != null && aux.clave != clave)
+            aux = aux.sig;
+        if (aux != null)
+            return aux.valor;
+        return -1;
+
     }
 
 }

@@ -2,9 +2,9 @@ package implDinamicas;
 
 import especificaciones.ConjuntoTDA;
 
-public class ConjuntoDM implements ConjuntoTDA{
+public class ConjuntoDM implements ConjuntoTDA {
 
-    class Nodo{
+    class Nodo {
         private int valor;
         private Nodo sig;
     }
@@ -18,28 +18,33 @@ public class ConjuntoDM implements ConjuntoTDA{
 
     @Override
     public void agregar(int x) {
-        Nodo aux = origen;
-        while(aux != null && aux.valor != x)
-            aux = aux.sig;
-        if(aux == null){
+        if (!pertence(x)) {
             Nodo nuevo = new Nodo();
             nuevo.valor = x;
             nuevo.sig = origen;
             origen = nuevo;
         }
-    }          
+    }
 
     @Override
     public void sacar(int x) {
-        if(origen != null)
-            if(origen.valor == x)
+        // Si el conjunto no esta vacio
+        if (!conjuntoVacio()) {
+            // Si es el primer elemento, lo saco
+            if (origen.valor == x)
                 origen = origen.sig;
-            Nodo aux = origen;
-            while(aux.sig != null && aux.sig.valor != x){
-                aux = aux.sig;
+            else {
+                Nodo aux = origen;
+                // Si no es el primer elemento, lo busco
+                while (aux.sig != null && aux.sig.valor != x) {
+                    aux = aux.sig;
+                }
+                // Si lo encuentro, lo saco
+                if (aux.sig != null) {
+                    aux.sig = aux.sig.sig;
+                }
             }
-            if(aux.sig != null)
-                aux.sig = aux.sig.sig;            
+        }
     }
 
     @Override
@@ -51,7 +56,7 @@ public class ConjuntoDM implements ConjuntoTDA{
     @Override
     public boolean pertence(int x) {
         Nodo aux = origen;
-        while(aux != null && aux.valor != x)
+        while (aux != null && aux.valor != x)
             aux = aux.sig;
         return aux != null;
     }

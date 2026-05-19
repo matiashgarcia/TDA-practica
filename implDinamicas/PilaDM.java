@@ -2,9 +2,9 @@ package implDinamicas;
 
 import especificaciones.PilaTDA;
 
-public class PilaDM implements PilaTDA{
+public class PilaDM implements PilaTDA {
 
-    class Nodo{
+    class Nodo {
         private int valor;
         private Nodo sig;
     }
@@ -26,7 +26,8 @@ public class PilaDM implements PilaTDA{
 
     @Override
     public void desapilar() {
-        origen = origen.sig;
+        if (origen != null)
+            origen = origen.sig;
     }
 
     @Override
