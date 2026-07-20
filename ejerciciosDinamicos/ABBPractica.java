@@ -14,17 +14,32 @@ public class ABBPractica {
     // Imprime de menor a mayor
     public void inOrder(ABBTDA abb){
         if(!abb.arbolVacio()){
-            preOrder(abb.hijoIzq());
+            inOrder(abb.hijoIzq());
             System.out.println(abb.raiz());
-            preOrder(abb.hijoDer());
+            inOrder(abb.hijoDer());
         }
     }
     // Imprime de abajo hacia arriba
     public void postOrder(ABBTDA abb){
         if(!abb.arbolVacio()){
-            preOrder(abb.hijoIzq());
-            preOrder(abb.hijoDer());
+            postOrder(abb.hijoIzq());
+            postOrder(abb.hijoDer());
             System.out.println(abb.raiz());
         }
+    }
+
+    // Calcula altura de un arbol desde la raiz a la hoja mas profunda
+    public int altura(ABBTDA abb){
+        if(abb.arbolVacio()){
+            return 0;
+        }
+        return 1 + Math.max(altura(abb.hijoIzq()), altura(abb.hijoDer()));
+    }
+
+    // Calcula la suma de todos los elemtnos del arbol
+    public int sumaArbol(ABBTDA abb){
+        if(abb.arbolVacio())
+            return 0;
+        return abb.raiz() + (sumaArbol(abb.hijoIzq()) + sumaArbol(abb.hijoDer()));
     }
 }
